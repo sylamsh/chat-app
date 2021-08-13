@@ -16,16 +16,11 @@ export default function useLocalStorage(key, initialValue) {
   })
 
   useEffect(() => {
-    localStorage.setItem(prefixedKey, JSON.stringify(value));
-    return ()=>{
-        localStorage.removeItem(prefixedKey, JSON.stringify(value));
-        // completely my-code need to attend this incase of any localStorage issues
-        // without this if you restart the several times a 'cross-origin-error' will occur
-        // which is caused by multiple instances of same key
-
-        //There is still some issue of reloading without a set id will cause the same error
-    }
-    // value !== undefined && localStorage.setItem(prefixedKey, JSON.stringify(value));
+    // localStorage.setItem(prefixedKey, JSON.stringify(value));
+    // return ()=>{
+    //     localStorage.removeItem(prefixedKey, JSON.stringify(value));
+    // }
+    value !== undefined && localStorage.setItem(prefixedKey, JSON.stringify(value));
   }, [prefixedKey, value]);
 
   return [value, setValue];
